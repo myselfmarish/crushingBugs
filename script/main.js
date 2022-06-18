@@ -7,7 +7,10 @@
 	let theThumbnails = document.querySelectorAll('#buttonHolder img'),
 		gameBoard = document.querySelector('.puzzle-board'),
 		pzlPieces = document.querySelectorAll('.puzzle-pieces img'),
-		dropZones = document.querySelectorAll('.drop-zone');
+		dropZones = document.querySelectorAll('.drop-zone'),
+		pzlPiecesBoard = document.querySelector('.puzzle-pieces');
+
+
 
 	/*
 	theThumbnails = [
@@ -30,6 +33,8 @@
 
 		// update the draggable piece's src attribute one at a time
 		pzlPieces.forEach((piece, index) => {
+			//moving all the pieces back to the game board
+			pzlPiecesBoard.appendChild(piece);
 			piece.src = `images/${imageNames[index] + clickedThumb.dataset.bgref}.jpg`;
 		});
 	}
