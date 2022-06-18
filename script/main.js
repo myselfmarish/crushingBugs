@@ -7,7 +7,10 @@
 	let theThumbnails = document.querySelectorAll('#buttonHolder img'),
 		gameBoard = document.querySelector('.puzzle-board'),
 		pzlPieces = document.querySelectorAll('.puzzle-pieces img'),
-		dropZones = document.querySelectorAll('.drop-zone');
+		dropZones = document.querySelectorAll('.drop-zone'),
+		pzlPiecesBoard = document.querySelector('.puzzle-pieces');
+
+
 
 	/*
 	theThumbnails = [
@@ -30,6 +33,8 @@
 
 		// update the draggable piece's src attribute one at a time
 		pzlPieces.forEach((piece, index) => {
+			//moving all the pieces back to the game board
+			pzlPiecesBoard.appendChild(piece);
 			piece.src = `images/${imageNames[index] + clickedThumb.dataset.bgref}.jpg`;
 		});
 	}
@@ -42,9 +47,10 @@
 	}
 
 	function allowDragOver(event) {
-		// override default behaviour on certain elements when an event happens
-		event.preventDefault();
-		console.log('started draggin over me');
+		//Allow the puzzle piece to be dropped only if there is no other piece in the drop zone.
+		if (event.path[0].classList[0]==='drop-zone'){
+			event.preventDefault();
+		}
 	}
 
 	function allowDrop(event) {
