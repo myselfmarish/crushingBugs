@@ -48,7 +48,8 @@
 
 	function allowDragOver(event) {
 		//Allow the puzzle piece to be dropped only if there is no other piece in the drop zone.
-		if (event.path[0].classList[0]==='drop-zone'){
+
+		if (event.path[0].classList[0]==='drop-zone' && event.path[0].children.length===0){
 			event.preventDefault();
 		}
 	}
