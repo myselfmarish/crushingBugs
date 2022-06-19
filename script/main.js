@@ -47,9 +47,10 @@
 	}
 
 	function allowDragOver(event) {
-		// override default behaviour on certain elements when an event happens
-		event.preventDefault();
-		console.log('started draggin over me');
+		//Allow the puzzle piece to be dropped only if there is no other piece in the drop zone.
+		if (event.path[0].classList[0]==='drop-zone'){
+			event.preventDefault();
+		}
 	}
 
 	function allowDrop(event) {
